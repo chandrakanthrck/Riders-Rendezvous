@@ -56,8 +56,6 @@ To run the project locally, make sure you have the following installed:
 - [MongoDB](https://www.mongodb.com/) or any other database you plan to use.
 
 
-markdown
-Copy code
 ## Installation
 
 1. Clone the repository:
@@ -67,17 +65,17 @@ Copy code
    cd Riders-Rendezvous
    ```
 
-Install dependencies:
+2. Install dependencies:
 
 ```bash
 npm install
 ```
-Start the server:
+3. Start the server:
 
 ```bash
 npm start
 ```
-For development with automatic restarts on changes:
+4. For development with automatic restarts on changes:
 
 ```bash
 npm run dev
