@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Rider's Connections - Riders Rendezvous</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+</head>
+
+<body>
+
+  <!-- Include Header and Navigation -->
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/upnav.ejs') %>
+
+  <div class="middle4">
+    <h2 class="riders">Rider's Connections</h2>
+
+    <!-- No Connections Available Message -->
+    <% if (data && !data.length) { %>
+      <p>Right now there is no connection</p>
+    <% } %>
+
+    <!-- Connections Table -->
+    <% if (data && data.length) { %>
+      <table class="tables">
+        <thead>
+          <tr>
+            <th class="saved">Connection</th>
+            <th class="saved">Category</th>
+            <th class="saved">Going?</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let index = 0; index < data.length; index++) { %>
+            <tr>
+              <td><%= data[index].diflev %></td>
+              <td><%= data[index].heading %></td>
+              <td><%= data[index].RSVP %></td>
+              <td>
+                <!-- Update and Delete Form -->
+                <form method="POST" action="/connection/savedconnections">
+                  <!-- Update Button -->
+                  <button class="button1" formaction="/connection/<%= data[index].ID %>" type="submit">
+                    Update
+                  </button>
+
+                  <!-- Delete Button with Hidden Input -->
+                  <input type="hidden" name="action" value="delete">
+                  <input type="hidden" name="ID" value="<%= data[index].ID %>">
+                  <button class="button2" type="submit">
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    <% } %>
+
+  </div>
+
+  <!-- Include Footer -->
+  <%- include('partials/footer.ejs') %>
+
+</body>
+
+</html>

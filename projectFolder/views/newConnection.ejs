@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>New Connection - Riders Rendezvous</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/assets/style.css">
+</head>
+
+<body>
+  <!-- Include Header and Navigation -->
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/upnav.ejs') %>
+
+  <div class="newmiddle">
+    <form class="newconnect" method="POST" action="newConnection">
+      
+      <!-- Display error messages -->
+      <% if (error) { %>
+        <div class="error-container">
+          <% error.forEach(function(item) { %>
+            <p class="error-message"><%= item.msg %></p>
+          <% }); %>
+        </div>
+      <% } %>
+
+      <!-- Form fields grouped in a fieldset -->
+      <fieldset>
+        <legend>Create a New Connection</legend>
+
+        <!-- Heading Field -->
+        <label for="heading">Heading: </label>
+        <input type="text" id="heading" name="heading" required><br><br>
+
+        <!-- Name Field -->
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <!-- Difficulty Level Field -->
+        <label for="diflev">Difficulty Level: </label>
+        <input type="text" id="diflev" name="diflev" required><br><br>
+
+        <!-- Details Field -->
+        <label for="details">Details: </label>
+        <input type="text" id="details" name="details" required><br><br>
+
+        <!-- Date Field -->
+        <label for="date">Date: </label>
+        <input type="date" id="date" name="date" required><br>
+
+        <!-- Time Field -->
+        <label for="time">Time: </label>
+        <input type="time" id="time" name="time" required><br>
+
+        <!-- Location Field -->
+        <label for="loc">Location: </label>
+        <input type="text" id="loc" name="loc" required><br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit" class="submit-button">
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- Include Footer -->
+  <%- include('partials/footer.ejs') %>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Login - Riders Rendezvous</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+</head>
+
+<body>
+  <!-- Include Header and Navigation -->
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/upnav.ejs') %>
+
+  <!-- Error Message Section -->
+  <% if (errors) { %>
+    <section class="error-messages">
+      <% errors.forEach(error => { %>
+        <div class="error">
+          <p><%= error.msg %></p>
+        </div>
+      <% }) %>
+    </section>
+  <% } %>
+
+  <!-- Login Form -->
+  <div class="middlecontainer">
+    <div id="login_form">
+      <form name="f1" method="post" action="/login" id="f1">
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br><br>
+
+        <button type="submit" class="button1">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Include Footer -->
+  <%- include('partials/footer.ejs') %>
+
+</body>
+
+</html>

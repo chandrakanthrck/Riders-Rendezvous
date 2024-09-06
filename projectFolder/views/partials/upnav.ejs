@@ -1,0 +1,15 @@
+<ul id="rightnav"> 
+    <% if(user) { %>
+      <li><a href="#">Welcome <%= user.name %>!</a></li>
+      <li><a href="/newConnection">START A NEW CONNECTION</a></li>
+      <li><a href="/connections">All connections</a></li>
+      <li><a href="/connection/savedconnections">My connections</a></li>
+      <li><a href="/logout"><%= user.name %>, Logout</a></li>
+    <% } else { %>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/signup">Sign Up</a></li>
+      <li><a href="/connections">All connections</a></li>
+      <li><a href="/newConnection">START A NEW CONNECTION</a></li>
+    <% } %>
+  </ul>
+  

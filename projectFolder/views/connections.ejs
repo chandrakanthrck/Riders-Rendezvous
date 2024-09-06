@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Riders Rendezvous - Connections</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+</head>
+
+<body>
+  <!-- Header and Navigation -->
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/upnav.ejs') %>
+
+  <section class="connections-container">
+    <% if (dataNew.length > 0) { %>
+      <% for (let i = 0; i < dataNew.length; i++) { %>
+        <article class="connection-category">
+          <!-- Display the connection key (heading) -->
+          <h2 class="category-heading"><%= dataNew[i].key %></h2>
+
+          <!-- Check if there are connections under this category -->
+          <% if (dataNew[i]['list'] && dataNew[i]['list'].length) { %>
+            <ul class="connection-list">
+              <% for (let j = 0; j < dataNew[i]['list'].length; j++) { %>
+                <li>
+                  <!-- Link to the connection details page -->
+                  <a class="connection-link" href="/connection/<%= dataNew[i]['list'][j].ID %>">
+                    <%= dataNew[i]['list'][j].diflev %>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+          <% } %>
+        </article>
+      <% } %>
+    <% } else { %>
+      <!-- Display a message if there are no connections available -->
+      <p>No connections available at the moment.</p>
+    <% } %>
+  </section>
+
+  <!-- Footer -->
+  <%- include('partials/footer.ejs') %>
+</body>
+
+</html>

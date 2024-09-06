@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Riders Rendezvous - Event Details</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+</head>
+
+<body>
+  <!-- Header and Navigation -->
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/upnav.ejs') %>
+
+  <div class="middle3">
+    <section class="event-details">
+      <!-- Event Difficulty Level -->
+      <h3 class="white"><%= data.diflev %></h3>
+
+      <!-- Rider Image -->
+      <img class="inline" src="<%- data.imgURL %>" alt="Rider profile image for <%= data.name %>">
+
+      <div class="inline1">
+        <!-- Event Information -->
+        <p class="margin">Hosted by: <%= data.name %></p>
+        <p class="margin">Date: <%= data.date %></p>
+        <p class="margin">Time: <%= data.time %></p>
+        <p class="margin">Location: <%= data.loc %></p>
+      </div>
+
+      <div class="inline2">
+        <!-- RSVP Buttons -->
+        <% if (user) { %>
+          <button onclick="window.location.href='savedconnections?ID=<%= data.ID %>&RSVP=Yes'" class="button1" type="button">Yes</button>
+          <button onclick="window.location.href='savedconnections?ID=<%= data.ID %>&RSVP=No'" class="button2" type="button">No</button>
+          <button onclick="window.location.href='savedconnections?ID=<%= data.ID %>&RSVP=Maybe'" class="button3" type="button">Maybe</button>
+        <% } else { %>
+          <!-- Redirect to login if the user is not logged in -->
+          <button onclick="window.location.href='/login'" class="button1" type="button">Yes</button>
+          <button onclick="window.location.href='/login'" class="button2" type="button">No</button>
+          <button onclick="window.location.href='/login'" class="button3" type="button">Maybe</button>
+        <% } %>
+
+        <!-- Event Details -->
+        <h3 class="white">Details</h3>
+        <p class="margin">Motorcycle balancing and manual transmission training.</p>
+        <p class="margin">Biker safety gear is mandatory.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <%- include('partials/footer.ejs') %>
+</body>
+
+</html>
